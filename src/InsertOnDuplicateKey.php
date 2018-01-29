@@ -99,10 +99,10 @@ trait InsertOnDuplicateKey
     }
 
     /**
-    * Static function for getting connection name
-    *
-    * @return string
-    */
+     * Static function for getting connection name
+     *
+     * @return string
+     */
     public static function getModelConnectionName()
     {
         $class = get_called_class();
@@ -235,11 +235,13 @@ trait InsertOnDuplicateKey
      *
      * @return string
      */
-    protected static function buildInsertOnDuplicateSql(array $data, array $updateColumns = null)
+    protected static function buildInsertOnDuplicateSql(array $data, array $updateColumns = null ,$scheme= null)
     {
         $first = static::getFirstRow($data);
+        if($scheme == null)
+            $scheme = env('DB_DATABASE');
 
-        $sql  = 'INSERT INTO `' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
+        $sql  = 'INSERT INTO `'.$scheme.'`.' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
         $sql .=  static::buildQuestionMarks($data) . PHP_EOL;
         $sql .= 'ON DUPLICATE KEY UPDATE ';
 
@@ -259,11 +261,13 @@ trait InsertOnDuplicateKey
      *
      * @return string
      */
-    protected static function buildInsertIgnoreSql(array $data)
+    protected static function buildInsertIgnoreSql(array $data,$scheme=null)
     {
         $first = static::getFirstRow($data);
+        if($scheme == null)
+            $scheme = env('DB_DATABASE');
 
-        $sql  = 'INSERT IGNORE INTO `' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
+        $sql  = 'INSERT IGNORE INTO `'.$scheme.'`.`' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
         $sql .=  static::buildQuestionMarks($data);
 
         return $sql;
@@ -276,11 +280,13 @@ trait InsertOnDuplicateKey
      *
      * @return string
      */
-    protected static function buildReplaceSql(array $data)
+    protected static function buildReplaceSql(array $data,$scheme=null)
     {
         $first = static::getFirstRow($data);
+        if($scheme == null)
+            $scheme = env('DB_DATABASE');
 
-        $sql  = 'REPLACE INTO `' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
+        $sql  = 'REPLACE INTO `'.$scheme.'`.`' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
         $sql .=  static::buildQuestionMarks($data);
 
         return $sql;

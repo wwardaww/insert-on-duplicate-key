@@ -7,13 +7,18 @@
         "mysql",
         "eloquent"
     ],
-    "homepage": "https://github.com/yadakhov/insert-on-duplicate-key",
+    "homepage": "https://github.com/wwardaww/insert-on-duplicate-key",
     "license": "MIT",
     "authors": [
         {
             "name": "Yada Khov",
             "email": "yada.khov@gmail.com",
             "homepage": "https://github.com/yadakhov"
+        },
+        {
+            "name": "Arda Fidanci",
+            "email": "neoarda@gmail.com",
+            "homepage": "https://github.com/wwardaww"
         }
     ],
     "require": {},
@@ -24,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Yadakhov\\": "src/"
+            "Wwardaww\\": "src/"
         }
     }
 }

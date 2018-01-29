@@ -1,5 +1,9 @@
 # MySQL Insert On Duplicate Key Update Eloquent Trait
 
+> This Trait forket from [yadakhov](https://github.com/yadakhov)/ [insert-on-duplicate-key](https://github.com/yadakhov/insert-on-duplicate-key)(v1.2.0)   
+
+
+#### Orginal packet status :
 [![Latest Stable Version](https://poser.pugx.org/yadakhov/insert-on-duplicate-key/version)](https://packagist.org/packages/yadakhov/insert-on-duplicate-key)
 [![License](https://poser.pugx.org/yadakhov/insert-on-duplicate-key/license)](https://packagist.org/packages/yadakhov/insert-on-duplicate-key)
 [![Build Status](https://travis-ci.org/yadakhov/insert-on-duplicate-key.svg)](https://travis-ci.org/yadakhov/insert-on-duplicate-key)
@@ -12,7 +16,7 @@ It's a trait meant to be used with Laravel's Eloquent ORM.
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use Yadakhov\InsertOnDuplicateKey;
+use Wwardaww\InsertOnDuplicateKey;
 
 /**
  * Class User.
@@ -33,14 +37,24 @@ class User extends Model
     ];
 ```
 
-#### INSERT ON DUPLICATE KEY UPDATE
+#### INSERT ON DUPLICATE KEY UPDATE ANOTHER SCHEME
 
 ```php
-    User::insertOnDuplicateKey($users);
+    User::insertOnDuplicateKey($users,null,'anotherScheme');
 ```
 ```sql
     -- produces this query
-    INSERT INTO `users`(`id`,`email`,`name`) VALUES
+    INSERT INTO `anotherScheme`.`users`(`id`,`email`,`name`) VALUES
+    (1,'user1@email.com','User One'), (2,'user3@email.com','User Two'), (3,'user3email.com','User Three')
+    ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `email` = VALUES(`email`), `name` = VALUES(`name`)
+```
+#### INSERT ON DUPLICATE KEY UPDATE DEFAULT SCHEME
+```php
+    User::insertOnDuplicateKey($users,null);
+```
+```sql
+    -- produces this query
+    INSERT INTO `homestead`.`users`(`id`,`email`,`name`) VALUES
     (1,'user1@email.com','User One'), (2,'user3@email.com','User Two'), (3,'user3email.com','User Three')
     ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `email` = VALUES(`email`), `name` = VALUES(`name`)
 ```

@@ -12,6 +12,8 @@
 
 It's a trait meant to be used with Laravel's Eloquent ORM.
 
+### Installing 
+> composer require wwardaww/insert-on-duplicate-key
 ### Code Example
 
 ```php

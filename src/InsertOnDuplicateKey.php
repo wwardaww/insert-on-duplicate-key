@@ -244,7 +244,7 @@ trait InsertOnDuplicateKey
         if($scheme == null)
             $scheme = env('DB_DATABASE');
 
-        $sql  = 'INSERT INTO `'.$scheme.'`.' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
+        $sql  = 'INSERT INTO `'.$scheme.'`.`' . static::getTablePrefix() . static::getTableName() . '`(' . static::getColumnList($first) . ') VALUES' . PHP_EOL;
         $sql .=  static::buildQuestionMarks($data) . PHP_EOL;
         $sql .= 'ON DUPLICATE KEY UPDATE ';
 

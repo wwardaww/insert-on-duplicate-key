@@ -15,10 +15,11 @@ trait InsertOnDuplicateKey
      *
      * @param array $data is an array of array.
      * @param array $updateColumns NULL or [] means update all columns
+     * @param string $scheme NULL or string means change scheme
      *
      * @return int 0 if row is not changed, 1 if row is inserted, 2 if row is updated
      */
-    public static function insertOnDuplicateKey(array $data, array $updateColumns = null)
+    public static function insertOnDuplicateKey(array $data, array $updateColumns = null,$scheme=null)
     {
         if (empty($data)) {
             return false;
@@ -29,7 +30,7 @@ trait InsertOnDuplicateKey
             $data = [$data];
         }
 
-        $sql = static::buildInsertOnDuplicateSql($data, $updateColumns);
+        $sql = static::buildInsertOnDuplicateSql($data, $updateColumns,$scheme);
 
         $data = static::inLineArray($data);
 
@@ -40,10 +41,10 @@ trait InsertOnDuplicateKey
      * Insert using mysql INSERT IGNORE INTO.
      *
      * @param array $data
-     *
+     * @param string $scheme NULL or string means change scheme
      * @return int 0 if row is ignored, 1 if row is inserted
      */
-    public static function insertIgnore(array $data)
+    public static function insertIgnore(array $data,$scheme=null)
     {
         if (empty($data)) {
             return false;
@@ -54,7 +55,7 @@ trait InsertOnDuplicateKey
             $data = [$data];
         }
 
-        $sql = static::buildInsertIgnoreSql($data);
+        $sql = static::buildInsertIgnoreSql($data,$scheme);
 
         $data = static::inLineArray($data);
 
@@ -65,10 +66,11 @@ trait InsertOnDuplicateKey
      * Insert using mysql REPLACE INTO.
      *
      * @param array $data
+     * @param string $scheme NULL or string means change scheme
      *
      * @return int 1 if row is inserted without replacements, greater than 1 if rows were replaced
      */
-    public static function replace(array $data)
+    public static function replace(array $data,$scheme)
     {
         if (empty($data)) {
             return false;
@@ -79,7 +81,7 @@ trait InsertOnDuplicateKey
             $data = [$data];
         }
 
-        $sql = static::buildReplaceSql($data);
+        $sql = static::buildReplaceSql($data,$scheme);
 
         $data = static::inLineArray($data);
 
@@ -232,6 +234,7 @@ trait InsertOnDuplicateKey
      *
      * @param array $data
      * @param array $updateColumns
+     * @param string $scheme NULL or string means change scheme
      *
      * @return string
      */
@@ -258,7 +261,7 @@ trait InsertOnDuplicateKey
      * Build the INSERT IGNORE sql statement.
      *
      * @param array $data
-     *
+     * @param string $scheme NULL or string means change scheme
      * @return string
      */
     protected static function buildInsertIgnoreSql(array $data,$scheme=null)
@@ -277,6 +280,7 @@ trait InsertOnDuplicateKey
      * Build REPLACE sql statement.
      *
      * @param array $data
+     * @param string $scheme NULL or string means change scheme
      *
      * @return string
      */

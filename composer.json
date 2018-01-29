@@ -1,5 +1,5 @@
 {
-    "name": "yadakhov/insert-on-duplicate-key",
+    "name": "wwardaww/insert-on-duplicate-key",
     "type": "library",
     "description": "A trait for MySQL INSERT ON DUPLICATE KEY UPDATE.",
     "keywords": [
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Wwardaww\\": "src/"
+            "wwardaww\\": "src/"
         }
     }
 }

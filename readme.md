@@ -1,6 +1,6 @@
 # MySQL Insert On Duplicate Key Update Eloquent Trait
 
-> This Trait forket from [yadakhov](https://github.com/yadakhov)/ [insert-on-duplicate-key](https://github.com/yadakhov/insert-on-duplicate-key)(v1.2.0)   
+> This Trait forked from [yadakhov](https://github.com/yadakhov)/ [insert-on-duplicate-key](https://github.com/yadakhov/insert-on-duplicate-key)(v1.2.0)   
 
 
 #### Orginal packet status :

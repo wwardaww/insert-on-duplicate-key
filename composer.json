@@ -1,5 +1,5 @@
 {
-    "name": "wwardaww/insert-on-duplicate-key",
+    "name": "Wwardaww/insert-on-duplicate-key",
     "type": "library",
     "description": "A trait for MySQL INSERT ON DUPLICATE KEY UPDATE.",
     "keywords": [

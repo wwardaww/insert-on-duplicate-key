@@ -2,6 +2,8 @@
 
 > This Trait forked from [yadakhov](https://github.com/yadakhov)/ [insert-on-duplicate-key](https://github.com/yadakhov/insert-on-duplicate-key)(v1.2.0)   
 
+[![Latest Stable Version](https://poser.pugx.org/wwardaww/insert-on-duplicate-key/version)](https://packagist.org/packages/wwardaww/insert-on-duplicate-key)
+[![License](https://poser.pugx.org/wwardaww/insert-on-duplicate-key/license)](https://packagist.org/packages/wwardaww/insert-on-duplicate-key)
 
 #### Orginal packet status :
 [![Latest Stable Version](https://poser.pugx.org/yadakhov/insert-on-duplicate-key/version)](https://packagist.org/packages/yadakhov/insert-on-duplicate-key)

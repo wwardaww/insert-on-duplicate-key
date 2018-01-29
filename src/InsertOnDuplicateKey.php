@@ -1,6 +1,6 @@
 <?php
 
-namespace Yadakhov;
+namespace Wwardaww;
 
 trait InsertOnDuplicateKey
 {
